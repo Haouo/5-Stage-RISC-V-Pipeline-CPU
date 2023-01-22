@@ -1,0 +1,387 @@
+
+./test/prog1/main.elf:     file format elf32-littleriscv
+./test/prog1/main.elf
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000000
+
+Program Header:
+0x70000003 off    0x00002158 vaddr 0x00000000 paddr 0x00000000 align 2**0
+         filesz 0x0000001a memsz 0x00000000 flags r--
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x00000328 memsz 0x00000328 flags r-x
+    LOAD off    0x00002000 vaddr 0x00008000 paddr 0x00008000 align 2**12
+         filesz 0x00000158 memsz 0x00000158 flags rw-
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000328  00000000  00000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000158  00008000  00008000  00002000  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .riscv.attributes 0000001a  00000000  00000000  00002158  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+00008000 l    d  .data	00000000 .data
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 l    df *ABS*	00000000 setup.o
+00000000 l       .text	00000000 _start
+00000000 l       .text	00000000 init_stack
+00000008 l       .text	00000000 SystemInit
+0000000c l       .text	00000000 SystemExit
+0000001c l       .text	00000000 dead_loop
+00000000 l    df *ABS*	00000000 main.o
+00008000 l       .data	00000000 num_test
+00008004 l       .data	00000000 TEST1_SIZE
+00008008 l       .data	00000000 TEST2_SIZE
+0000800c l       .data	00000000 TEST3_SIZE
+00008010 l       .data	00000000 test1
+00008098 l       .data	00000000 test2
+000080e4 l       .data	00000000 test3
+00000030 l       .text	00000000 main_start
+00000054 l       .text	00000000 main_loop
+000000c4 l       .text	00000000 main_end
+000000c8 l       .text	00000000 merge_sort
+000000a0 l       .text	00000000 write_ans_loop
+000000bc l       .text	00000000 main_loop_end
+0000031c l       .text	00000000 main_exit
+000001c0 l       .text	00000000 merge_sort_end
+000001dc l       .text	00000000 merge
+00000214 l       .text	00000000 temp_init_loop
+0000023c l       .text	00000000 merge_continue
+0000024c l       .text	00000000 merge_first_loop
+000002a0 l       .text	00000000 merge_second_loop
+00000288 l       .text	00000000 merge_first_loop_else
+000002c8 l       .text	00000000 merge_third_loop
+000002f0 l       .text	00000000 merge_end
+0000fffc g       .data	00000000 _sim_end
+00000020 g       .text	00000000 main
+00009000 g       .data	00000000 _answer
+0000fff0 g       .data	00000000 _stack
+
+
+Contents of section .text:
+ 0000 17010100 130101ff ef008001 97020100  ................
+ 0010 938202ff 1303f0ff 23a06200 6f000000  ........#.b.o...
+ 0020 1301c1ff 23205101 979a0000 938a8afd  ....# Q.........
+ 0030 17840000 130404fd 03240400 97840000  .........$......
+ 0040 938484fc 17890000 1309c9fc 93890a00  ................
+ 0050 130a0000 63088a06 93820400 83a20200  ....c...........
+ 0060 93844400 1383f2ff 130101ff 23201100  ..D.........# ..
+ 0070 23225100 23246100 23267100 13050900  #"Q.#$a.#&q.....
+ 0080 93050000 13060300 ef000004 83200100  ............. ..
+ 0090 83224100 03238100 8323c100 13010101  ."A..#...#......
+ 00a0 638e0200 03230900 23a06900 13094900  c....#..#.i...I.
+ 00b0 93894900 9382f2ff 6ff09ffe 130a1a00  ..I.....o.......
+ 00c0 6ff05ff9 6f008025 1301c1fe 23208100  o._.o..%....# ..
+ 00d0 23229100 23242101 23263101 23284101  #"..#$!.#&1.#(A.
+ 00e0 13040500 93840500 13090600 63da240d  ............c.$.
+ 00f0 b3822401 93d21240 1301c1fe 23201100  ..$....@....# ..
+ 0100 23225100 2324a100 2326b100 2328c100  #"Q.#$..#&..#(..
+ 0110 13050400 93850400 13860200 eff0dffa  ................
+ 0120 83200100 83224100 03258100 8325c100  . ..."A..%...%..
+ 0130 03260101 13014101 1301c1fe 23201100  .&....A.....# ..
+ 0140 23225100 2324a100 2326b100 2328c100  #"Q.#$..#&..#(..
+ 0150 13050400 93821200 93850200 13060900  ................
+ 0160 eff09ff6 83200100 83224100 03258100  ..... ..."A..%..
+ 0170 8325c100 03260101 13014101 1301c1fe  .%...&....A.....
+ 0180 23201100 23225100 2324a100 2326b100  # ..#"Q.#$..#&..
+ 0190 2328c100 13050400 93850400 13860200  #(..............
+ 01a0 93060900 ef008003 83200100 83224100  ......... ..."A.
+ 01b0 03258100 8324c100 03290101 13014101  .%...$...)....A.
+ 01c0 03240100 83244100 03298100 8329c100  .$...$A..)...)..
+ 01d0 032a0101 13014101 67800000 1301c1fe  .*....A.g.......
+ 01e0 23208100 23229100 23242101 23263101  # ..#"..#$!.#&1.
+ 01f0 23284101 b382b640 93821200 13932200  #(A....@......".
+ 0200 33016140 13040100 b304b640 3389b640  3.a@.......@3..@
+ 0210 13030000 63045302 93132300 b3037400  ....c.S...#...t.
+ 0220 330eb300 131e2e00 330ec501 032e0e00  3.......3.......
+ 0230 23a0c301 13031300 6ff0dffd 93820500  #.......o.......
+ 0240 13030000 b303b640 93831300 63ca6404  .......@....c.d.
+ 0250 63487904 131e2300 330ec401 032e0e00  cHy...#.3.......
+ 0260 939e2300 b30ed401 83ae0e00 63cece01  ..#.........c...
+ 0270 939e2200 b30ed501 23a0ce01 93821200  ..".....#.......
+ 0280 13031300 6ff09ffc 139e2200 330ec501  ....o.....".3...
+ 0290 2320de01 93821200 93831300 6ff01ffb  # ..........o...
+ 02a0 63c46402 131e2300 330ec401 032e0e00  c.d...#.3.......
+ 02b0 939e2200 b30ed501 23a0ce01 93821200  ..".....#.......
+ 02c0 13031300 6ff0dffd 63447902 139e2300  ....o...cDy...#.
+ 02d0 330ec401 032e0e00 939e2200 b30ed501  3.........".....
+ 02e0 23a0ce01 93821200 93831300 6ff0dffd  #...........o...
+ 02f0 b382b640 93821200 93922200 33015100  ...@......".3.Q.
+ 0300 03240100 83244100 03298100 8329c100  .$...$A..)...)..
+ 0310 032a0101 13014101 67800000 832a0100  .*....A.g....*..
+ 0320 13014100 67800000                    ..A.g...        
+Contents of section .data:
+ 8000 03000000 22000000 13000000 1d000000  ...."...........
+ 8010 03000000 29000000 12000000 08000000  ....)...........
+ 8020 28000000 06000000 2d000000 01000000  (.......-.......
+ 8030 12000000 0a000000 18000000 2e000000  ................
+ 8040 25000000 17000000 2b000000 0c000000  %.......+.......
+ 8050 03000000 25000000 00000000 0f000000  ....%...........
+ 8060 0b000000 31000000 2f000000 1b000000  ....1.../.......
+ 8070 17000000 1e000000 10000000 0a000000  ................
+ 8080 2d000000 27000000 01000000 17000000  -...'...........
+ 8090 28000000 26000000 fdffffff e9ffffff  (...&...........
+ 80a0 eaffffff faffffff ebffffff edffffff  ................
+ 80b0 ffffffff 00000000 feffffff d1ffffff  ................
+ 80c0 efffffff d2ffffff faffffff e2ffffff  ................
+ 80d0 ceffffff f3ffffff d1ffffff f7ffffff  ................
+ 80e0 ceffffff d2ffffff 00000000 e3ffffff  ................
+ 80f0 feffffff 17000000 d2ffffff 2e000000  ................
+ 8100 09000000 eeffffff e9ffffff 23000000  ............#...
+ 8110 dbffffff 03000000 e8ffffff eeffffff  ................
+ 8120 16000000 00000000 0f000000 d5ffffff  ................
+ 8130 f0ffffff efffffff d6ffffff cfffffff  ................
+ 8140 e3ffffff 13000000 d4ffffff 00000000  ................
+ 8150 eeffffff 17000000                    ........        
+Contents of section .riscv.attributes:
+ 0000 41190000 00726973 63760001 0f000000  A....riscv......
+ 0010 05727633 32693270 3000               .rv32i2p0.      
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00010117          	auipc	sp,0x10
+   4:	ff010113          	addi	sp,sp,-16 # fff0 <_stack>
+
+00000008 <SystemInit>:
+   8:	018000ef          	jal	ra,20 <main>
+
+0000000c <SystemExit>:
+   c:	00010297          	auipc	t0,0x10
+  10:	ff028293          	addi	t0,t0,-16 # fffc <_sim_end>
+  14:	fff00313          	li	t1,-1
+  18:	0062a023          	sw	t1,0(t0)
+
+0000001c <dead_loop>:
+  1c:	0000006f          	j	1c <dead_loop>
+
+00000020 <main>:
+  20:	ffc10113          	addi	sp,sp,-4
+  24:	01512023          	sw	s5,0(sp)
+  28:	00009a97          	auipc	s5,0x9
+  2c:	fd8a8a93          	addi	s5,s5,-40 # 9000 <_answer>
+
+00000030 <main_start>:
+  30:	00008417          	auipc	s0,0x8
+  34:	fd040413          	addi	s0,s0,-48 # 8000 <num_test>
+  38:	00042403          	lw	s0,0(s0)
+  3c:	00008497          	auipc	s1,0x8
+  40:	fc848493          	addi	s1,s1,-56 # 8004 <TEST1_SIZE>
+  44:	00008917          	auipc	s2,0x8
+  48:	fcc90913          	addi	s2,s2,-52 # 8010 <test1>
+  4c:	000a8993          	mv	s3,s5
+  50:	00000a13          	li	s4,0
+
+00000054 <main_loop>:
+  54:	068a0863          	beq	s4,s0,c4 <main_end>
+  58:	00048293          	mv	t0,s1
+  5c:	0002a283          	lw	t0,0(t0)
+  60:	00448493          	addi	s1,s1,4
+  64:	fff28313          	addi	t1,t0,-1
+  68:	ff010113          	addi	sp,sp,-16
+  6c:	00112023          	sw	ra,0(sp)
+  70:	00512223          	sw	t0,4(sp)
+  74:	00612423          	sw	t1,8(sp)
+  78:	00712623          	sw	t2,12(sp)
+  7c:	00090513          	mv	a0,s2
+  80:	00000593          	li	a1,0
+  84:	00030613          	mv	a2,t1
+  88:	040000ef          	jal	ra,c8 <merge_sort>
+  8c:	00012083          	lw	ra,0(sp)
+  90:	00412283          	lw	t0,4(sp)
+  94:	00812303          	lw	t1,8(sp)
+  98:	00c12383          	lw	t2,12(sp)
+  9c:	01010113          	addi	sp,sp,16
+
+000000a0 <write_ans_loop>:
+  a0:	00028e63          	beqz	t0,bc <main_loop_end>
+  a4:	00092303          	lw	t1,0(s2)
+  a8:	0069a023          	sw	t1,0(s3)
+  ac:	00490913          	addi	s2,s2,4
+  b0:	00498993          	addi	s3,s3,4
+  b4:	fff28293          	addi	t0,t0,-1
+  b8:	fe9ff06f          	j	a0 <write_ans_loop>
+
+000000bc <main_loop_end>:
+  bc:	001a0a13          	addi	s4,s4,1
+  c0:	f95ff06f          	j	54 <main_loop>
+
+000000c4 <main_end>:
+  c4:	2580006f          	j	31c <main_exit>
+
+000000c8 <merge_sort>:
+  c8:	fec10113          	addi	sp,sp,-20
+  cc:	00812023          	sw	s0,0(sp)
+  d0:	00912223          	sw	s1,4(sp)
+  d4:	01212423          	sw	s2,8(sp)
+  d8:	01312623          	sw	s3,12(sp)
+  dc:	01412823          	sw	s4,16(sp)
+  e0:	00050413          	mv	s0,a0
+  e4:	00058493          	mv	s1,a1
+  e8:	00060913          	mv	s2,a2
+  ec:	0d24da63          	bge	s1,s2,1c0 <merge_sort_end>
+  f0:	012482b3          	add	t0,s1,s2
+  f4:	4012d293          	srai	t0,t0,0x1
+  f8:	fec10113          	addi	sp,sp,-20
+  fc:	00112023          	sw	ra,0(sp)
+ 100:	00512223          	sw	t0,4(sp)
+ 104:	00a12423          	sw	a0,8(sp)
+ 108:	00b12623          	sw	a1,12(sp)
+ 10c:	00c12823          	sw	a2,16(sp)
+ 110:	00040513          	mv	a0,s0
+ 114:	00048593          	mv	a1,s1
+ 118:	00028613          	mv	a2,t0
+ 11c:	fadff0ef          	jal	ra,c8 <merge_sort>
+ 120:	00012083          	lw	ra,0(sp)
+ 124:	00412283          	lw	t0,4(sp)
+ 128:	00812503          	lw	a0,8(sp)
+ 12c:	00c12583          	lw	a1,12(sp)
+ 130:	01012603          	lw	a2,16(sp)
+ 134:	01410113          	addi	sp,sp,20
+ 138:	fec10113          	addi	sp,sp,-20
+ 13c:	00112023          	sw	ra,0(sp)
+ 140:	00512223          	sw	t0,4(sp)
+ 144:	00a12423          	sw	a0,8(sp)
+ 148:	00b12623          	sw	a1,12(sp)
+ 14c:	00c12823          	sw	a2,16(sp)
+ 150:	00040513          	mv	a0,s0
+ 154:	00128293          	addi	t0,t0,1
+ 158:	00028593          	mv	a1,t0
+ 15c:	00090613          	mv	a2,s2
+ 160:	f69ff0ef          	jal	ra,c8 <merge_sort>
+ 164:	00012083          	lw	ra,0(sp)
+ 168:	00412283          	lw	t0,4(sp)
+ 16c:	00812503          	lw	a0,8(sp)
+ 170:	00c12583          	lw	a1,12(sp)
+ 174:	01012603          	lw	a2,16(sp)
+ 178:	01410113          	addi	sp,sp,20
+ 17c:	fec10113          	addi	sp,sp,-20
+ 180:	00112023          	sw	ra,0(sp)
+ 184:	00512223          	sw	t0,4(sp)
+ 188:	00a12423          	sw	a0,8(sp)
+ 18c:	00b12623          	sw	a1,12(sp)
+ 190:	00c12823          	sw	a2,16(sp)
+ 194:	00040513          	mv	a0,s0
+ 198:	00048593          	mv	a1,s1
+ 19c:	00028613          	mv	a2,t0
+ 1a0:	00090693          	mv	a3,s2
+ 1a4:	038000ef          	jal	ra,1dc <merge>
+ 1a8:	00012083          	lw	ra,0(sp)
+ 1ac:	00412283          	lw	t0,4(sp)
+ 1b0:	00812503          	lw	a0,8(sp)
+ 1b4:	00c12483          	lw	s1,12(sp)
+ 1b8:	01012903          	lw	s2,16(sp)
+ 1bc:	01410113          	addi	sp,sp,20
+
+000001c0 <merge_sort_end>:
+ 1c0:	00012403          	lw	s0,0(sp)
+ 1c4:	00412483          	lw	s1,4(sp)
+ 1c8:	00812903          	lw	s2,8(sp)
+ 1cc:	00c12983          	lw	s3,12(sp)
+ 1d0:	01012a03          	lw	s4,16(sp)
+ 1d4:	01410113          	addi	sp,sp,20
+ 1d8:	00008067          	ret
+
+000001dc <merge>:
+ 1dc:	fec10113          	addi	sp,sp,-20
+ 1e0:	00812023          	sw	s0,0(sp)
+ 1e4:	00912223          	sw	s1,4(sp)
+ 1e8:	01212423          	sw	s2,8(sp)
+ 1ec:	01312623          	sw	s3,12(sp)
+ 1f0:	01412823          	sw	s4,16(sp)
+ 1f4:	40b682b3          	sub	t0,a3,a1
+ 1f8:	00128293          	addi	t0,t0,1
+ 1fc:	00229313          	slli	t1,t0,0x2
+ 200:	40610133          	sub	sp,sp,t1
+ 204:	00010413          	mv	s0,sp
+ 208:	40b604b3          	sub	s1,a2,a1
+ 20c:	40b68933          	sub	s2,a3,a1
+ 210:	00000313          	li	t1,0
+
+00000214 <temp_init_loop>:
+ 214:	02530463          	beq	t1,t0,23c <merge_continue>
+ 218:	00231393          	slli	t2,t1,0x2
+ 21c:	007403b3          	add	t2,s0,t2
+ 220:	00b30e33          	add	t3,t1,a1
+ 224:	002e1e13          	slli	t3,t3,0x2
+ 228:	01c50e33          	add	t3,a0,t3
+ 22c:	000e2e03          	lw	t3,0(t3)
+ 230:	01c3a023          	sw	t3,0(t2)
+ 234:	00130313          	addi	t1,t1,1
+ 238:	fddff06f          	j	214 <temp_init_loop>
+
+0000023c <merge_continue>:
+ 23c:	00058293          	mv	t0,a1
+ 240:	00000313          	li	t1,0
+ 244:	40b603b3          	sub	t2,a2,a1
+ 248:	00138393          	addi	t2,t2,1
+
+0000024c <merge_first_loop>:
+ 24c:	0464ca63          	blt	s1,t1,2a0 <merge_second_loop>
+ 250:	04794863          	blt	s2,t2,2a0 <merge_second_loop>
+ 254:	00231e13          	slli	t3,t1,0x2
+ 258:	01c40e33          	add	t3,s0,t3
+ 25c:	000e2e03          	lw	t3,0(t3)
+ 260:	00239e93          	slli	t4,t2,0x2
+ 264:	01d40eb3          	add	t4,s0,t4
+ 268:	000eae83          	lw	t4,0(t4)
+ 26c:	01cece63          	blt	t4,t3,288 <merge_first_loop_else>
+ 270:	00229e93          	slli	t4,t0,0x2
+ 274:	01d50eb3          	add	t4,a0,t4
+ 278:	01cea023          	sw	t3,0(t4)
+ 27c:	00128293          	addi	t0,t0,1
+ 280:	00130313          	addi	t1,t1,1
+ 284:	fc9ff06f          	j	24c <merge_first_loop>
+
+00000288 <merge_first_loop_else>:
+ 288:	00229e13          	slli	t3,t0,0x2
+ 28c:	01c50e33          	add	t3,a0,t3
+ 290:	01de2023          	sw	t4,0(t3)
+ 294:	00128293          	addi	t0,t0,1
+ 298:	00138393          	addi	t2,t2,1
+ 29c:	fb1ff06f          	j	24c <merge_first_loop>
+
+000002a0 <merge_second_loop>:
+ 2a0:	0264c463          	blt	s1,t1,2c8 <merge_third_loop>
+ 2a4:	00231e13          	slli	t3,t1,0x2
+ 2a8:	01c40e33          	add	t3,s0,t3
+ 2ac:	000e2e03          	lw	t3,0(t3)
+ 2b0:	00229e93          	slli	t4,t0,0x2
+ 2b4:	01d50eb3          	add	t4,a0,t4
+ 2b8:	01cea023          	sw	t3,0(t4)
+ 2bc:	00128293          	addi	t0,t0,1
+ 2c0:	00130313          	addi	t1,t1,1
+ 2c4:	fddff06f          	j	2a0 <merge_second_loop>
+
+000002c8 <merge_third_loop>:
+ 2c8:	02794463          	blt	s2,t2,2f0 <merge_end>
+ 2cc:	00239e13          	slli	t3,t2,0x2
+ 2d0:	01c40e33          	add	t3,s0,t3
+ 2d4:	000e2e03          	lw	t3,0(t3)
+ 2d8:	00229e93          	slli	t4,t0,0x2
+ 2dc:	01d50eb3          	add	t4,a0,t4
+ 2e0:	01cea023          	sw	t3,0(t4)
+ 2e4:	00128293          	addi	t0,t0,1
+ 2e8:	00138393          	addi	t2,t2,1
+ 2ec:	fddff06f          	j	2c8 <merge_third_loop>
+
+000002f0 <merge_end>:
+ 2f0:	40b682b3          	sub	t0,a3,a1
+ 2f4:	00128293          	addi	t0,t0,1
+ 2f8:	00229293          	slli	t0,t0,0x2
+ 2fc:	00510133          	add	sp,sp,t0
+ 300:	00012403          	lw	s0,0(sp)
+ 304:	00412483          	lw	s1,4(sp)
+ 308:	00812903          	lw	s2,8(sp)
+ 30c:	00c12983          	lw	s3,12(sp)
+ 310:	01012a03          	lw	s4,16(sp)
+ 314:	01410113          	addi	sp,sp,20
+ 318:	00008067          	ret
+
+0000031c <main_exit>:
+ 31c:	00012a83          	lw	s5,0(sp)
+ 320:	00410113          	addi	sp,sp,4
+ 324:	00008067          	ret

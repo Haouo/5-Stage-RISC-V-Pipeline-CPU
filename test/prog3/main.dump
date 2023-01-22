@@ -1,0 +1,107 @@
+
+./test/prog3/main.elf:     file format elf32-littleriscv
+./test/prog3/main.elf
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000000
+
+Program Header:
+0x70000003 off    0x00002004 vaddr 0x00000000 paddr 0x00000000 align 2**0
+         filesz 0x0000001a memsz 0x00000000 flags r--
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x00000084 memsz 0x00000084 flags r-x
+    LOAD off    0x00002000 vaddr 0x00008000 paddr 0x00008000 align 2**12
+         filesz 0x00000004 memsz 0x00000004 flags rw-
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000084  00000000  00000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00008000  00008000  00002000  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .riscv.attributes 0000001a  00000000  00000000  00002004  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+00008000 l    d  .data	00000000 .data
+00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
+00000000 l    df *ABS*	00000000 setup.o
+00000000 l       .text	00000000 _start
+00000000 l       .text	00000000 init_stack
+00000008 l       .text	00000000 SystemInit
+0000000c l       .text	00000000 SystemExit
+0000001c l       .text	00000000 dead_loop
+00000000 l    df *ABS*	00000000 main.o
+00008000 l       .data	00000000 test_data
+00000030 l       .text	00000000 Data_Harzard
+00000078 l       .text	00000000 main_exit
+0000fffc g       .data	00000000 _sim_end
+00000020 g       .text	00000000 main
+00009000 g       .data	00000000 _answer
+0000fff0 g       .data	00000000 _stack
+
+
+Contents of section .text:
+ 0000 17010100 130101ff ef008001 97020100  ................
+ 0010 938202ff 1303f0ff 23a06200 6f000000  ........#.b.o...
+ 0020 1301c1ff 23208100 17940000 130484fd  ....# ..........
+ 0030 178f0000 130f0ffd 93021000 13031000  ................
+ 0040 b3836200 93833300 330e7300 23207400  ..b...3.3.s.# t.
+ 0050 2322c401 13000000 13000000 13000000  #"..............
+ 0060 13000000 13000000 832e0f00 138f1e00  ................
+ 0070 2324e401 6f004000 03240100 13014100  #$..o.@..$....A.
+ 0080 67800000                             g...            
+Contents of section .data:
+ 8000 03000000                             ....            
+Contents of section .riscv.attributes:
+ 0000 41190000 00726973 63760001 0f000000  A....riscv......
+ 0010 05727633 32693270 3000               .rv32i2p0.      
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00010117          	auipc	sp,0x10
+   4:	ff010113          	addi	sp,sp,-16 # fff0 <_stack>
+
+00000008 <SystemInit>:
+   8:	018000ef          	jal	ra,20 <main>
+
+0000000c <SystemExit>:
+   c:	00010297          	auipc	t0,0x10
+  10:	ff028293          	addi	t0,t0,-16 # fffc <_sim_end>
+  14:	fff00313          	li	t1,-1
+  18:	0062a023          	sw	t1,0(t0)
+
+0000001c <dead_loop>:
+  1c:	0000006f          	j	1c <dead_loop>
+
+00000020 <main>:
+  20:	ffc10113          	addi	sp,sp,-4
+  24:	00812023          	sw	s0,0(sp)
+  28:	00009417          	auipc	s0,0x9
+  2c:	fd840413          	addi	s0,s0,-40 # 9000 <_answer>
+
+00000030 <Data_Harzard>:
+  30:	00008f17          	auipc	t5,0x8
+  34:	fd0f0f13          	addi	t5,t5,-48 # 8000 <test_data>
+  38:	00100293          	li	t0,1
+  3c:	00100313          	li	t1,1
+  40:	006283b3          	add	t2,t0,t1
+  44:	00338393          	addi	t2,t2,3
+  48:	00730e33          	add	t3,t1,t2
+  4c:	00742023          	sw	t2,0(s0)
+  50:	01c42223          	sw	t3,4(s0)
+  54:	00000013          	nop
+  58:	00000013          	nop
+  5c:	00000013          	nop
+  60:	00000013          	nop
+  64:	00000013          	nop
+  68:	000f2e83          	lw	t4,0(t5)
+  6c:	001e8f13          	addi	t5,t4,1
+  70:	01e42423          	sw	t5,8(s0)
+  74:	0040006f          	j	78 <main_exit>
+
+00000078 <main_exit>:
+  78:	00012403          	lw	s0,0(sp)
+  7c:	00410113          	addi	sp,sp,4
+  80:	00008067          	ret
